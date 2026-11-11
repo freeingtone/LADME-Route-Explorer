@@ -1,5 +1,5 @@
-# QA / test report — v3.1.3
-Build: 20261109-visit-counter
+# QA / test report — v3.1.5
+Build: 20261110-count-only-mode
 
 ## Passed — automated
 - Build and all nine Node suites, including test-counter.cjs.
@@ -24,3 +24,12 @@ authenticated admin interface, trusted-proxy parsing or bot filtering.
 IP records expire after the configured period on the next maintenance request;
 daily host cron is recommended for predictable cleanup. All-time count retained.
 No new illustrations or changes to the scientific models.
+
+
+## v3.1.4 addendum — counter
+Passed (PHP 8.3.6 + Chromium): normal count and refresh, no increment on tab change, locked-down parent, open_basedir (and its storage_dir fix), static host, proxy Host rewrite, cross-site refusal, 40 concurrent views with no loss. All nine Node suites pass; test-counter.cjs now covers the three specific messages and their Thai text.
+Pending: your real host, retention pruning over 30 days, cron cleanup, manual screen-reader pass.
+
+## v3.1.5 addendum — count-only mode
+Passed (PHP 8.3.6 + Chromium): open_basedir-confined host with IP logging on (clear message), with `log_ip` false (count 1 then 2, no IP stored, notice swapped, data file not readable over HTTP), normal host with `log_ip` false still using the private folder. All nine suites pass.
+Pending: the real InfinityFree account (I could not open the live site), whether its Apache honours the `.htaccess` (the PHP guard protects the file regardless), manual screen-reader pass.

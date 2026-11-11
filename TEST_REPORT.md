@@ -1,5 +1,5 @@
-# QA / test report — v3.1.3
-Build: 20261109-visit-counter
+# QA / test report — v3.1.5
+Build: 20261110-count-only-mode
 
 ## Passed — automated
 - Build and all nine Node suites, including test-counter.cjs.

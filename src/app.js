@@ -871,7 +871,7 @@ function tick(ts){
 }
 requestAnimationFrame(tick);
 // Diagnostic instrumentation; does not alter the pharmacokinetic equations.
-const APP_VERSION='3.1.3', BUILD_ID='20261109-visit-counter', MODEL_VERSION='route-release-two-pool-profiles-v7';
+const APP_VERSION='3.1.5', BUILD_ID='20261110-count-only-mode', MODEL_VERSION='route-release-two-pool-profiles-v7';
 const debugEvents=[];
 function debugSnapshot(){
   const p=medicines[selectedMedicine],s=data[Math.min(2400,Math.round(time*100))];
@@ -1202,9 +1202,9 @@ if(typeof ResizeObserver!=='undefined'){
 
 // Offline English–Thai presentation catalogue. Does not alter model values or equations.
 const THAI_TEXT = Object.freeze({
-  "LADME Route Explorer · v3.1.3": "สำรวจเส้นทางยา LADME · v3.1.3",
+  "LADME Route Explorer · v3.1.5": "สำรวจเส้นทางยา LADME · v3.1.5",
   "Explorer": "สำรวจเส้นทางยา",
-  "PHARMACOLOGY · ORAL / SC / IV · v3.1.3": "เภสัชวิทยา · กิน / SC / IV · v3.1.3",
+  "PHARMACOLOGY · ORAL / SC / IV · v3.1.5": "เภสัชวิทยา · กิน / SC / IV · v3.1.5",
   "AN INTERACTIVE PHARMACOLOGY LESSON": "บทเรียนเภสัชวิทยาแบบโต้ตอบ",
   "How does a medicine travel through the body?": "ยาเดินทางผ่านร่างกายอย่างไร?",
   "What happens after you take a medicine? Watch it enter the blood, move into tissues, change in the liver, and leave the body. Explore each step at your own pace.": "หลังจากรับยาแล้วเกิดอะไรขึ้น? ดูยาเข้าสู่เลือด กระจายไปยังเนื้อเยื่อ เปลี่ยนแปลงที่ตับ และออกจากร่างกาย สำรวจแต่ละขั้นตามจังหวะของคุณ",
@@ -1643,7 +1643,7 @@ const THAI_TEXT = Object.freeze({
   "Kidneys · SVG Repo": "ไต · SVG Repo",
   "CC0 1.0 public-domain dedication": "CC0 1.0 อุทิศให้เป็นสาธารณสมบัติ",
   ". Images are embedded so this file works offline. Source links require internet access.": "ฝังภาพไว้ให้ทำงานออฟไลน์ได้ ลิงก์อ้างอิงต้องใช้อินเทอร์เน็ต",
-  "Version & diagnostics · v3.1.3": "รุ่นและการตรวจสอบ · v3.1.3",
+  "Version & diagnostics · v3.1.5": "รุ่นและการตรวจสอบ · v3.1.5",
   "Build:": "บิลด์:",
   "Model:": "แบบจำลอง:",
   "Known limitation:": "ข้อจำกัดที่ทราบ:",
@@ -1652,7 +1652,7 @@ const THAI_TEXT = Object.freeze({
   "Download debug report": "ดาวน์โหลดรายงานตรวจสอบ",
   "Clear event history": "ล้างประวัติเหตุการณ์",
   "Session-only event history; no automatic uploads or persistent storage.": "ประวัติเหตุการณ์อยู่เฉพาะระหว่างใช้งาน ไม่มีอัปโหลดอัตโนมัติหรือเก็บถาวร",
-  "Version 3.1.3 · Build 20261109-visit-counter · Educational simulation for introductory pharmacology. Not a dosing calculator.": "รุ่น 3.1.3 · บิลด์ 20261109-visit-counter · แบบจำลองเพื่อเรียนเภสัชวิทยาเบื้องต้น ไม่ใช่เครื่องคำนวณขนาดยา",
+  "Version 3.1.5 · Build 20261110-count-only-mode · Educational simulation for introductory pharmacology. Not a dosing calculator.": "รุ่น 3.1.5 · บิลด์ 20261110-count-only-mode · แบบจำลองเพื่อเรียนเภสัชวิทยาเบื้องต้น ไม่ใช่เครื่องคำนวณขนาดยา",
   "▶ Start simulation": "▶ เริ่มจำลอง",
   "↺ Reset": "↺ เริ่มใหม่",
   "Speed": "ความเร็ว",
@@ -2087,7 +2087,11 @@ const THAI_TEXT = Object.freeze({
   "Page views:": "จำนวนเปิดหน้า:",
   "Offline — no page view recorded.": "ออฟไลน์ — ไม่บันทึกการเปิดหน้า",
   "Counter unavailable — the page still works.": "ตัวนับไม่พร้อมใช้งาน — ยังใช้บทเรียนได้",
-  "Visit tracking is disabled.": "ปิดการติดตามการเข้าชมอยู่"
+  "Visit tracking is disabled.": "ปิดการติดตามการเข้าชมอยู่",
+  "This page counts page views only. It does not record IP addresses. Refreshing counts as another view; this is not a count of unique people.": "หน้านี้นับจำนวนการเปิดหน้าเท่านั้น และไม่บันทึกที่อยู่ IP การรีเฟรชนับเป็นการเปิดอีกครั้ง ไม่ใช่จำนวนผู้เข้าชมที่ไม่ซ้ำกัน",
+  "Counter unavailable — this host does not run the PHP counter. The lesson still works.": "ตัวนับไม่พร้อมใช้งาน — โฮสต์นี้ไม่ได้เปิดใช้ตัวนับ PHP ยังใช้บทเรียนได้",
+  "Counter unavailable — the server could not create its private log folder. The lesson still works.": "ตัวนับไม่พร้อมใช้งาน — เซิร์ฟเวอร์สร้างโฟลเดอร์บันทึกส่วนตัวไม่ได้ ยังใช้บทเรียนได้",
+  "Counter unavailable — the server rejected the request origin. The lesson still works.": "ตัวนับไม่พร้อมใช้งาน — เซิร์ฟเวอร์ปฏิเสธต้นทางของคำขอ ยังใช้บทเรียนได้"
 });
 
 // Translate presentation nodes only. Keep controls, answers, identifiers and model data intact.
@@ -2177,6 +2181,15 @@ if(document.body.nodeType===1){
   });
 }
 
+// Plain-language reason for a failed counter request. Every message starts with
+// "Counter unavailable" and states that the lesson is unaffected.
+function counterMessage(error){
+  const code=error&&error.code,status=error&&error.status;
+  if(code==='private_storage_required'||code==='storage_unavailable')return 'Counter unavailable — the server could not create its private log folder. The lesson still works.';
+  if(code==='cross_origin'||code==='cross_site')return 'Counter unavailable — the server rejected the request origin. The lesson still works.';
+  if(code==='no_php'||status===404||status===405||status===501||(status&&!code))return 'Counter unavailable — this host does not run the PHP counter. The lesson still works.';
+  return 'Counter unavailable — the page still works.';
+}
 // Optional same-origin PHP counter; independent of the lesson and model.
 async function recordPageView(){
   const output=$('visitCount');
@@ -2187,12 +2200,18 @@ async function recordPageView(){
   const timeout=setTimeout(()=>abort.abort(),6000);
   try{
     const response=await fetch('analytics.php',{method:'POST',credentials:'same-origin',cache:'no-store',headers:{'Content-Type':'application/json'},body:'{}',signal:abort.signal});
-    if(!response.ok)throw new Error('counter unavailable');
-    const result=await response.json();
+    if(!response.ok){
+      // Read only the short error code the endpoint sends (never paths or addresses).
+      let code='';try{code=String((await response.json()).error||'')}catch(e){}
+      const failure=new Error('counter unavailable');failure.status=response.status;failure.code=code;throw failure;
+    }
+    let result;
+    try{result=await response.json()}catch(e){const failure=new Error('not json');failure.status=response.status;failure.code='no_php';throw failure}
     if(result.enabled===false){output.textContent='Visit tracking is disabled.';return;}
     if(result.enabled!==true||!Number.isSafeInteger(result.page_views)||result.page_views<0)throw new Error('invalid counter');
     output.textContent='Page views: '+result.page_views.toLocaleString('en-US');
-  }catch(error){output.textContent='Counter unavailable — the page still works.';}
+    if(result.logs_ip===false){const note=$('visitNotice');if(note)note.textContent='This page counts page views only. It does not record IP addresses. Refreshing counts as another view; this is not a count of unique people.';}
+  }catch(error){output.textContent=counterMessage(error);}
   finally{clearTimeout(timeout);}
 }
 if(document.body.nodeType===1&&window.location&&typeof fetch==='function')recordPageView();

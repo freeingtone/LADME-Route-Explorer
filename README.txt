@@ -1,5 +1,5 @@
-LADME Route Explorer v3.1.3
-Build: 20261109-visit-counter
+LADME Route Explorer v3.1.5
+Build: 20261110-count-only-mode
 
 Open index.html in a browser. No installation or network access is needed.
 Four tabs: Anatomy, Drug journey, Pharmacology, Simulation. Simulation remains

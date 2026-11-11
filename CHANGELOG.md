@@ -1,3 +1,25 @@
+# v3.1.5 — Count-only counter for hosts that confine PHP to the web folder (InfinityFree)
+Build: `20261110-count-only-mode`
+
+- Cause found for the "private log folder" message: some free hosts, including InfinityFree, let PHP read and write only inside the site's own `htdocs`, so the private folder beside the web root can never be created.
+- New config option `log_ip` in `analytics-config.php`. Set it to `false` for a count-only counter: no IP address is stored, only the running total. The default stays `true` (IP logging, private folder outside the web root).
+- With `log_ip` false and no usable private folder, the total is kept in `htdocs/.ladme-counter-<hash>/`, protected twice: an `.htaccess` that denies all requests, and a `visits.php` data file that exits with a 404 before sending anything.
+- A private folder outside the web root is still preferred whenever the host allows it.
+- When the server reports count-only mode, the page replaces the IP-logging notice with an accurate one (English and Thai).
+- Model, lessons and the other tabs unchanged.
+
+# v3.1.4 — Counter diagnostics and proxy-safe origin check
+Build: `20261109-counter-diagnostics`
+
+- Fixed: "Counter unavailable" gave no reason. The page now says why, in English and Thai, and every message still states the lesson works:
+  - this host does not run the PHP counter (static hosting, PHP disabled, endpoint missing);
+  - the server could not create its private log folder (needs `storage_dir`);
+  - the server rejected the request origin.
+- analytics.php: the Origin/Host comparison is now only a fallback for browsers that do not send `Sec-Fetch-Site`, so a proxy or CDN that rewrites Host no longer blocks the count. Cross-site requests are still refused.
+- analytics.php: every storage failure now writes the exact cause to the server's private error log (paths never go to the public reply).
+- DEPLOYMENT.md: troubleshooting table and tested results.
+- Model, lesson, pharmacology tab and all other behaviour unchanged.
+
 # v3.1.3 — Optional hosted page-view counter and private IP log
 Build: 20261109-visit-counter
 
